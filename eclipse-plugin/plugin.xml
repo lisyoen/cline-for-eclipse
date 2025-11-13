@@ -2,6 +2,13 @@
 <?eclipse version="3.4"?>
 <plugin>
    <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.cline.eclipse.ClineStartup">
+      </startup>
+   </extension>
+   
+   <extension
          point="org.eclipse.ui.commands">
       <command
             id="cline-for-eclipse.testCommand"
