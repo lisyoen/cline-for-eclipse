@@ -1,0 +1,8 @@
+# 세션 파일 디렉토리
+
+이 폴더에는 각 작업 세션의 상세 정보가 저장됩니다.
+
+## 세션 파일 명명 규칙
+`session-YYYYMMDD-XXX-description.md`
+
+예: `session-20251113-001-initial-setup.md`
