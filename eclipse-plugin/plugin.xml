@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="cline-for-eclipse.testCommand"
+            name="Cline Test">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="menu:help?after=additions">
+         <command
+               commandId="cline-for-eclipse.testCommand"
+               label="Cline Test"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            commandId="cline-for-eclipse.testCommand"
+            class="com.cline.eclipse.handlers.TestHandler">
+      </handler>
+   </extension>
+
+</plugin>

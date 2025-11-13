@@ -4,6 +4,21 @@
 
 ## 활성/최근 세션
 
+### session-20241114-002-eclipse-plugin-creation
+- **날짜**: 2024-11-14
+- **상태**: 진행 중 🚧
+- **작업**: Eclipse 플러그인 프로젝트 생성
+- **설명**: Eclipse IDE에서 Cline 플러그인 프로젝트 생성 및 기본 코드 구조 작성
+- **우선순위**: HIGH 🔥
+- **파일**: [session-20241114-002-eclipse-plugin-creation.md](sessions/session-20241114-002-eclipse-plugin-creation.md)
+- **관련 세션**: session-20241114-001-project-setup
+- **진행 항목**:
+  - ✅ Eclipse 플러그인 프로젝트 생성
+  - ✅ MANIFEST.MF, build.properties 확인
+  - ⏳ Activator 클래스 생성
+  - ⏳ plugin.xml 생성
+  - ⏳ 기본 패키지 구조
+
 ### session-20241114-001-project-setup
 - **날짜**: 2024-11-14
 - **상태**: 완료 ✅
