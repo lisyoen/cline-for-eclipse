@@ -4,15 +4,20 @@
 
 ## 활성/최근 세션
 
-### session-YYYYMMDD-001-description
-- **날짜**: YYYY-MM-DD
-- **상태**: 진행 중 🚧 / 완료 ✅ / 대기 중 ⏸️
-- **작업**: [작업 제목]
-- **설명**: [작업 상세 설명]
-- **우선순위**: HIGH 🔥 / MEDIUM 🟡 / LOW 🟢
-- **파일**: [session-YYYYMMDD-001-description.md](sessions/session-YYYYMMDD-001-description.md)
-- **관련 세션**: [이전 관련 세션 ID들]
-- **예상 소요**: [예상 시간]
+### session-20241114-001-project-setup
+- **날짜**: 2024-11-14
+- **상태**: 완료 ✅
+- **작업**: 프로젝트 초기 설정 및 구조 생성
+- **설명**: Cline for Eclipse 프로젝트의 Git 서브모듈 추가, 디렉토리 구조 생성, 프로젝트 문서 작성
+- **우선순위**: HIGH 🔥
+- **파일**: [session-20241114-001-project-setup.md](sessions/session-20241114-001-project-setup.md)
+- **관련 세션**: 첫 세션
+- **완료 항목**: 
+  - ✅ project-goal.md 작성
+  - ✅ cline-core 서브모듈 추가
+  - ✅ eclipse-plugin, test-workspace 디렉토리 생성
+  - ✅ README 및 문서 작성
+  - ✅ Git 커밋 (ff8524f)
 
 ---
 
