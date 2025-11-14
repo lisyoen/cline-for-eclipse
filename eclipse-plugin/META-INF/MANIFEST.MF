@@ -6,7 +6,10 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-Activator: com.cline.eclipse.ClineActivator
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
- org.eclipse.core.commands
+ org.eclipse.core.commands,
+ org.eclipse.swt,
+ org.eclipse.compare,
+ org.eclipse.core.resources
 Automatic-Module-Name: cline.for.eclipse
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Bundle-ActivationPolicy: lazy
