@@ -4,6 +4,22 @@
 
 ## 활성/최근 세션
 
+### session-20241115-002-phase3-host-provider
+- **날짜**: 2024-11-15
+- **상태**: 진행 중 🚧
+- **작업**: Phase 3 - EclipseHostProvider 스켈레톤 구현
+- **설명**: Eclipse 플랫폼 통합을 위한 HostProvider 및 관련 제공자 클래스 구현
+- **우선순위**: HIGH 🔥
+- **파일**: [session-20241115-002-phase3-host-provider.md](sessions/session-20241115-002-phase3-host-provider.md)
+- **관련 세션**: session-20241115-001-phase2-core-analysis
+- **완료 항목**:
+  - ✅ Java 패키지 구조 생성
+  - ✅ EclipseHostProvider 구현
+  - ✅ EclipseWebviewProvider 스켈레톤
+  - ✅ EclipseDiffViewProvider 스켈레톤
+  - ✅ GrpcHostBridge 스켈레톤
+  - ✅ MANIFEST.MF 의존성 추가
+
 ### session-20241115-001-phase2-core-analysis
 - **날짜**: 2024-11-15
 - **상태**: 완료 ✅
