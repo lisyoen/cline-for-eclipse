@@ -18,8 +18,7 @@
             id="com.cline.eclipse.ui.views.ClineView"
             name="Cline"
             category="com.cline.eclipse.category"
-            class="com.cline.eclipse.ui.views.ClineView"
-            icon="icons/icon.png">
+            class="com.cline.eclipse.ui.views.ClineView">
       </view>
    </extension>
    
