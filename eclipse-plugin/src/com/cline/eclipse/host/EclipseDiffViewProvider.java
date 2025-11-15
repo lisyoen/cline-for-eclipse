@@ -1,10 +1,5 @@
 package com.cline.eclipse.host;
 
-import org.eclipse.compare.CompareConfiguration;
-import org.eclipse.compare.CompareEditorInput;
-import org.eclipse.compare.CompareUI;
-import org.eclipse.core.runtime.IProgressMonitor;
-
 /**
  * Eclipse implementation of Diff View Provider using CompareUI.
  * 
@@ -21,11 +16,10 @@ public class EclipseDiffViewProvider {
      * @param title Title for the diff viewer
      */
     public void showDiff(String leftPath, String rightPath, String title) {
-        CompareConfiguration config = new CompareConfiguration();
-        config.setLeftLabel("Original");
-        config.setRightLabel("Modified");
-        
         // TODO: Create proper CompareEditorInput with file contents
+        // CompareConfiguration config = new CompareConfiguration();
+        // config.setLeftLabel("Original");
+        // config.setRightLabel("Modified");
         // CompareEditorInput input = new DiffInput(config, leftPath, rightPath);
         // CompareUI.openCompareEditor(input);
         

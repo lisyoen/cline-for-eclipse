@@ -9,6 +9,21 @@
    </extension>
    
    <extension
+         point="org.eclipse.ui.views">
+      <category
+            id="com.cline.eclipse.category"
+            name="Cline">
+      </category>
+      <view
+            id="com.cline.eclipse.ui.views.ClineView"
+            name="Cline"
+            category="com.cline.eclipse.category"
+            class="com.cline.eclipse.ui.views.ClineView"
+            icon="icons/icon.png">
+      </view>
+   </extension>
+   
+   <extension
          point="org.eclipse.ui.commands">
       <command
             id="cline-for-eclipse.testCommand"
