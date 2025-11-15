@@ -1,5 +1,12 @@
 package com.cline.eclipse.host;
 
+import io.grpc.ManagedChannel;
+import io.grpc.ManagedChannelBuilder;
+import bot.cline.host.proto.WorkspaceServiceGrpc;
+import bot.cline.host.proto.WindowServiceGrpc;
+import bot.cline.host.proto.EnvServiceGrpc;
+import bot.cline.host.proto.DiffServiceGrpc;
+
 /**
  * gRPC client bridge for communicating with Cline Core.
  * 
@@ -18,11 +25,14 @@ public class GrpcHostBridge {
     private int port;
     private boolean connected;
     
-    // Service clients
-    // private WorkspaceServiceClient workspaceClient;
-    // private WindowServiceClient windowClient;
-    // private EnvServiceClient envClient;
-    // private DiffServiceClient diffClient;
+    // gRPC channel
+    private ManagedChannel channel;
+    
+    // Service stubs (blocking)
+    private WorkspaceServiceGrpc.WorkspaceServiceBlockingStub workspaceService;
+    private WindowServiceGrpc.WindowServiceBlockingStub windowService;
+    private EnvServiceGrpc.EnvServiceBlockingStub envService;
+    private DiffServiceGrpc.DiffServiceBlockingStub diffService;
     
     public GrpcHostBridge() {
         this(DEFAULT_HOST, DEFAULT_PORT);
@@ -44,19 +54,26 @@ public class GrpcHostBridge {
         
         System.out.println("Connecting to Cline Core at " + host + ":" + port);
         
-        // TODO: Create gRPC channel and initialize service clients
-        // ManagedChannel channel = ManagedChannelBuilder
-        //     .forAddress(host, port)
-        //     .usePlaintext()
-        //     .build();
-        
-        // workspaceClient = new WorkspaceServiceClient(channel);
-        // windowClient = new WindowServiceClient(channel);
-        // envClient = new EnvServiceClient(channel);
-        // diffClient = new DiffServiceClient(channel);
-        
-        connected = true;
-        System.out.println("Connected to Cline Core");
+        try {
+            // Create gRPC channel
+            channel = ManagedChannelBuilder
+                .forAddress(host, port)
+                .usePlaintext()
+                .build();
+            
+            // Initialize service stubs
+            workspaceService = WorkspaceServiceGrpc.newBlockingStub(channel);
+            windowService = WindowServiceGrpc.newBlockingStub(channel);
+            envService = EnvServiceGrpc.newBlockingStub(channel);
+            diffService = DiffServiceGrpc.newBlockingStub(channel);
+            
+            connected = true;
+            System.out.println("✓ Connected to Cline Core gRPC services");
+            
+        } catch (Exception e) {
+            System.err.println("✗ Failed to connect to Cline Core: " + e.getMessage());
+            connected = false;
+        }
     }
     
     /**
@@ -69,35 +86,59 @@ public class GrpcHostBridge {
         
         System.out.println("Shutting down gRPC connection...");
         
-        // TODO: Shutdown channel
-        // channel.shutdown();
-        
-        connected = false;
-        System.out.println("gRPC connection closed");
+        try {
+            if (channel != null && !channel.isShutdown()) {
+                channel.shutdown();
+                // Wait for channel to terminate
+                java.util.concurrent.TimeUnit.SECONDS.sleep(1);
+                if (!channel.isTerminated()) {
+                    channel.shutdownNow();
+                }
+            }
+            
+            connected = false;
+            System.out.println("✓ gRPC connection closed");
+            
+        } catch (Exception e) {
+            System.err.println("✗ Error shutting down gRPC: " + e.getMessage());
+        }
     }
     
     /**
      * Check if connected to Cline Core.
      */
     public boolean isConnected() {
-        return connected;
+        return connected && channel != null && !channel.isShutdown();
     }
     
-    // Service client getters (to be implemented)
+    // Service stub getters
     
-    // public WorkspaceServiceClient getWorkspaceClient() {
-    //     return workspaceClient;
-    // }
+    public WorkspaceServiceGrpc.WorkspaceServiceBlockingStub getWorkspaceService() {
+        if (!isConnected()) {
+            throw new IllegalStateException("Not connected to Cline Core");
+        }
+        return workspaceService;
+    }
     
-    // public WindowServiceClient getWindowClient() {
-    //     return windowClient;
-    // }
+    public WindowServiceGrpc.WindowServiceBlockingStub getWindowService() {
+        if (!isConnected()) {
+            throw new IllegalStateException("Not connected to Cline Core");
+        }
+        return windowService;
+    }
     
-    // public EnvServiceClient getEnvClient() {
-    //     return envClient;
-    // }
+    public EnvServiceGrpc.EnvServiceBlockingStub getEnvService() {
+        if (!isConnected()) {
+            throw new IllegalStateException("Not connected to Cline Core");
+        }
+        return envService;
+    }
     
-    // public DiffServiceClient getDiffClient() {
-    //     return diffClient;
-    // }
+    public DiffServiceGrpc.DiffServiceBlockingStub getDiffService() {
+        if (!isConnected()) {
+            throw new IllegalStateException("Not connected to Cline Core");
+        }
+        return diffService;
+    }
 }
+
